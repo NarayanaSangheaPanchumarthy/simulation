@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AetherSim | Scenario Simulation</title>
+    <script>
+      // Fix for "Cannot set property fetch of #<Window> which has only a getter"
+      // Some libraries (like node-fetch) try to overwrite window.fetch
+      (function() {
+        const originalFetch = window.fetch;
+        if (originalFetch) {
+          try {
+            // Try to make it writable if possible, but usually it's not the issue
+            // The issue is when a library tries to do window.fetch = ...
+            // We can't easily stop the assignment if it's a getter-only property
+            // but we can try to define it ourselves first.
+            Object.defineProperty(window, 'fetch', {
+              value: originalFetch,
+              writable: true,
+              configurable: true
+            });
+          } catch (e) {
+            console.warn('Could not redefine window.fetch, but continuing...');
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

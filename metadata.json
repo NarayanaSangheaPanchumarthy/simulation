@@ -1,0 +1,5 @@
+{
+  "name": "AetherSim: Multi-Agent Scenario Engine",
+  "description": "A high-fidelity simulation platform using a dynamic multi-agent orchestration layer for complex scenario forecasting and analysis.",
+  "requestFramePermissions": []
+}
